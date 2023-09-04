@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import classes from './event-list.module.css';
+import classes from './event-item.module.css';
 
 function EventItem(props){
     const {title, image, date, location, id } = props;
