@@ -10,7 +10,7 @@ function Layout(props){
    <main>{props.children} </main>
    </fragment>
 
-   )
+   );
 
 }
 
