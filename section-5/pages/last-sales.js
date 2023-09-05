@@ -3,10 +3,10 @@ import useSWR from 'swr';
 
 function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
-  // const [isLoading, setIsLoading] = useState(false);
+
 
   const { data, error } = useSWR(
-    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json',
+    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json',
     (url) => fetch(url).then(res => res.json())
   );
 
@@ -47,7 +47,7 @@ function LastSalesPage(props) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json'
+    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json'
   );
   const data = await response.json();
 
