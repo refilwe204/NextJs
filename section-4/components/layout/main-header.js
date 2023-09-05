@@ -1,12 +1,13 @@
 import Link from "next/link";
-import classes from './main-header.module.css'
+import classes from './main-header.module.css';
 
 function Header() {
-     return <header>
-        <div>
+     return (
+     <header className={classes.header}>
+        <div className={classes.logo}>
            <Link href='/'>NextEvents</Link>
         </div>
-        <nav>
+        <nav className={classes.navigation}>
            <ul>
             <li>
                 <Link href='/'>Browse All Events</Link>
@@ -14,6 +15,8 @@ function Header() {
            </ul>
         </nav>
      </header>
+
+     )
 }
 
 export default MainHeader;
