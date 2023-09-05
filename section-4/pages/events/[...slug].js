@@ -17,12 +17,13 @@ function FilteredEventsPage(){
    const numYear = +filteredYear;
    const numMonth = +filteredMonth;
 
-   if(isNaN(numYear) || 
-   isNaN(numMonth) || 
-   numYear > 2030 || 
-   numYear < 2021 || 
-   numMonth < 1 || 
-   numMonth > 12 
+   if(
+      isNaN(numYear) || 
+      isNaN(numMonth) || 
+      numYear > 2030 || 
+      numYear < 2021 || 
+      numMonth < 1 || 
+      numMonth > 12 
    ) {
      return <p>Invalid filter. Please adjust your values!</p>;
    }
@@ -39,7 +40,7 @@ function FilteredEventsPage(){
     
    return (
         <div>     
-            <EventList item={filteredEvents} />
+            <EventList items={filteredEvents} />
         </div>
     )
 }
