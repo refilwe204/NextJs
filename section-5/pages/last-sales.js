@@ -26,26 +26,6 @@ function LastSalesPage(props) {
     }
   }, [data]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch('https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const transformedSales = [];
-
-  //       for (const key in data) {
-  //         transformedSales.push({
-  //           id: key,
-  //           username: data[key].username,
-  //           volume: data[key].volume,
-  //         });
-  //       }
-
-  //       setSales(transformedSales);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
   if (error) {
     return <p>Failed to load.</p>;
   }
