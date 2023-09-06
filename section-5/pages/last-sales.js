@@ -4,10 +4,11 @@ import useSWR from 'swr';
 function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
 
-
+  const fetcher = (...args) => fetch(...args).then(res => res.json())
+  
   const { data, error } = useSWR(
-    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json',
-    (url) => fetch(url).then(res => res.json())
+    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json', fetcher
+  
   );
 
   useEffect(() => {
@@ -46,9 +47,11 @@ function LastSalesPage(props) {
 }
 
 export async function getStaticProps() {
+
+  const fetcher = (...args) => fetch(...args).then(res => res.json())
   const response = await fetch(
-    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json'
-  );
+    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json', fetcher
+  ) ;
   const data = await response.json();
 
   const transformedSales = [];
