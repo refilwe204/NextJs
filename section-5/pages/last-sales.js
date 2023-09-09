@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import useSWR from "swr";
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
   // const [isLoading, setIsLoading] = useState(false);
 
   const { data, error } = useSWR(
-    "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
+    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json',
+    (url) => fetch(url).then(res => res.json())
   );
 
   useEffect(() => {
@@ -27,10 +28,7 @@ function LastSalesPage(props) {
 
   // useEffect(() => {
   //   setIsLoading(true);
-
-  //   fetch(
-  //     "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
-  //   )
+  //   fetch('https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json')
   //     .then((response) => response.json())
   //     .then((data) => {
   //       const transformedSales = [];
@@ -49,7 +47,7 @@ function LastSalesPage(props) {
   // }, []);
 
   if (error) {
-    return <p>Failed to load</p>;
+    return <p>Failed to load.</p>;
   }
 
   if (!data && !sales) {
@@ -69,10 +67,10 @@ function LastSalesPage(props) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
+    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json'
   );
-
   const data = await response.json();
+
   const transformedSales = [];
 
   for (const key in data) {
@@ -83,7 +81,7 @@ export async function getStaticProps() {
     });
   }
 
-  return { props: { sales: transformedSales }};
+  return { props: { sales: transformedSales } };
 }
 
 export default LastSalesPage;
