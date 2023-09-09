@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
-import useSWR from 'swr';
+import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  const fetcher = (...args) => fetch(...args).then(res => res.json())
-  
   const { data, error } = useSWR(
-    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json', fetcher
-  
+    "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
   );
 
   useEffect(() => {
@@ -27,8 +25,31 @@ function LastSalesPage(props) {
     }
   }, [data]);
 
+  // useEffect(() => {
+  //   setIsLoading(true);
+
+  //   fetch(
+  //     "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const transformedSales = [];
+
+  //       for (const key in data) {
+  //         transformedSales.push({
+  //           id: key,
+  //           username: data[key].username,
+  //           volume: data[key].volume,
+  //         });
+  //       }
+
+  //       setSales(transformedSales);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
+
   if (error) {
-    return <p>Failed to load.</p>;
+    return <p>Failed to load</p>;
   }
 
   if (!data && !sales) {
@@ -47,13 +68,11 @@ function LastSalesPage(props) {
 }
 
 export async function getStaticProps() {
-
-  const fetcher = (...args) => fetch(...args).then(res => res.json())
   const response = await fetch(
-    'https://nextjs-course-35c9d-default-rtdb.firebaseio.com/sales.json', fetcher
-  ) ;
-  const data = await response.json();
+    "https://udemy-nextjs-section5-9d9d3-default-rtdb.firebaseio.com//sales.json"
+  );
 
+  const data = await response.json();
   const transformedSales = [];
 
   for (const key in data) {
@@ -64,7 +83,7 @@ export async function getStaticProps() {
     });
   }
 
-  return { props: { sales: transformedSales } };
+  return { props: { sales: transformedSales }};
 }
 
 export default LastSalesPage;
