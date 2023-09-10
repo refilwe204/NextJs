@@ -11,7 +11,9 @@ function EventLogistics(props) {
     month: 'long',
     year: 'numeric',
   });
-  const addressText = address.replace(', ', '\n');
+
+  // Check if address is defined before using replace
+  const addressText = address ? address.replace(', ', '\n') : '';
 
   return (
     <section className={classes.logistics}>
@@ -22,9 +24,11 @@ function EventLogistics(props) {
         <LogisticsItem icon={DateIcon}>
           <time>{humanReadableDate}</time>
         </LogisticsItem>
-        <LogisticsItem icon={AddressIcon}>
-          <address>{addressText}</address>
-        </LogisticsItem>
+        {addressText && ( // Render only if addressText is defined
+          <LogisticsItem icon={AddressIcon}>
+            <address>{addressText}</address>
+          </LogisticsItem>
+        )}
       </ul>
     </section>
   );
