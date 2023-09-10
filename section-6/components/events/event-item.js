@@ -12,9 +12,7 @@ function EventItem(props) {
     month: 'long',
     year: 'numeric',
   });
-
-  // Check if location is defined before using replace
-  const formattedAddress = location ? location.replace(', ', '\n') : '';
+  const formattedAddress = location.replace(', ', '\n');
   const exploreLink = `/events/${id}`;
 
   return (
@@ -27,12 +25,10 @@ function EventItem(props) {
             <DateIcon />
             <time>{humanReadableDate}</time>
           </div>
-          {location && (
-            <div className={classes.address}>
-              <AddressIcon />
-              <address>{formattedAddress}</address>
-            </div>
-          )}
+          <div className={classes.address}>
+            <AddressIcon />
+            <address>{formattedAddress}</address>
+          </div>
         </div>
         <div className={classes.actions}>
           <Button link={exploreLink}>
