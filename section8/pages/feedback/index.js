@@ -30,7 +30,7 @@ function FeedbackPage(props) {
 }
 
 export async function getStaticProps() {
-    const filePath = buildFeedbackPath(); // Correctly invoking the function
+    const filePath = buildFeedbackPath();
     const FeedbackData = extractFeedback(filePath);
     return {
       props: {
