@@ -10,7 +10,7 @@ function HomePage() {
     const enteredEmail = emailInputRef.current.value;
     const enteredFeedback = FeedbackInputRef.current.value;
 
-    
+    fetch(); // { email: 'test@test.com', text: 'Some Feedback text' }
   }
 
   return (
