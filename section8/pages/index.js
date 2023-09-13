@@ -19,18 +19,18 @@ function HomePage() {
       method: 'POST',
       body: JSON.stringify(reqBody),
       headers: {
-        'content-type': 'application/json'
+        'Content-type': 'application/json'
       }
     }).then((response) => response.json())
       .then((data) => console.log(data));
   }
 
-  function loadFeedbackHandler() {
+  function loadFeedbackHandler(handler) {
     fetch('/api/feedback') 
       .then((response) => response.json())
-      .then((data) => {
-        setFeedbackItems(data,feedback); // Update feedbackItems with the fetched data
-      });
+      .then((data) => 
+        setFeedbackItems(data.feedback) // Update feedbackItems with the fetched data
+      );
   }
 
   return (

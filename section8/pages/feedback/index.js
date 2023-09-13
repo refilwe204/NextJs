@@ -31,7 +31,7 @@ function FeedbackPage(props) {
 
 export async function getStaticProps() {
     const filePath = buildFeedbackPath();
-    const FeedbackData = extractFeedback(filePath);
+    const data = extractFeedback(filePath);// changed feedbackdata - data
     return {
       props: {
         feedbackItems: data,
