@@ -25,7 +25,5 @@ export async function connectDatabase() {
         .sort(sort)
         .toArray();
 
-   return documents; 
-
   }
   
