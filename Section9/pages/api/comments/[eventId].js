@@ -27,7 +27,7 @@ async function handler(req, res) {
         text.trim() === ''
      ) {
         res.status(422).json({ message: 'Invalid input'});
-        // removed client.close()
+        //client.close();
         return;
      }
 
@@ -57,7 +57,7 @@ async function handler(req, res) {
 
     try{
 
-      const documents = await getAllDocuments(client, 'comments', {_id: -1});
+      const documents = await getAllDocuments(client, 'comments', {_id: -1}, { eventId: eventId });
       res.status(200).json({ comments: dummyList});
     } catch (error) {
       res.status(500).json({message: 'Getting comments failed.'});
@@ -65,7 +65,7 @@ async function handler(req, res) {
     }
   }
 
-   // removed client.close()
+    //client.close();
 
 }
 
