@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 async function handler(req, res) {
     const eventId = req.query.eventId;
 
-    const client = await MongoClient.connect('mongodb+srv://nqatyelwaangelin:<angeli@101>@cluster0.gx7p3wm.mongodb.net/newsletter?retryWrites=true&w=majority&appName=AtlasApp');
+    const client = await MongoClient.connect('mongodb+srv://nqatyelwaangelin:<angeli@101>@cluster0.gx7p3wm.mongodb.net/events?retryWrites=true&w=majority&appName=AtlasApp');
 
     if(req.method === 'POST') {
      const { email, name, text } = req.body
@@ -21,13 +21,17 @@ async function handler(req, res) {
 
      console.log(email, name, text)
      const newComment ={
-        id: new Date().toISOString(),
         email,
         name,
-        text
+        text,
+        eventId
      };
 
-     console.log(newComment);
+     const db = client.db();
+
+     const result = await db.collection('comments').insertOne(newComment);
+
+     console.log(result);
 
      res.status(201).json({ message: 'Added comment' , comment: newComment });
     }
@@ -40,8 +44,9 @@ async function handler(req, res) {
         ];
 
         res.status(200).json({ comments: dummyList});
-
     }
+
+    client.close();
 
 }
 
