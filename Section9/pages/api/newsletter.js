@@ -9,15 +9,25 @@ async function handler(req, res) {
       return; 
     }
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://nqatyelwaangelin:<angeli@101>@cluster0.gx7p3wm.mongodb.net/events?retryWrites=true&w=majority&appName=AtlasApp'
-      );
-      const db = client.db();
+    let client;
+    
+    try {
+      client = await connectDatabase();
+    } catch (error) {
+      res.status(500).json({ message: 'Connecting to the database failed!'});
+      return;
+    }
 
-      await db.collection('newsletter').insertOne({ email: userEmail});
 
-      client.close();
-      
+    try {
+    await insertDocument(client, {email: userEmail});
+    client.close();
+    } catch (error) {
+      res.status(500).json({ message: 'Inserting data failed!'});
+      return;
+    }
+
+   
       res.status(201).json({message: 'signed up'})
   }
 }
