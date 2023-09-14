@@ -1,4 +1,6 @@
-function handler(req, res) {
+import { MongoClient } from 'mongodb'
+
+async function handler(req, res) {
   if (req.method === 'POST') {
     const userEmail = req.body.email;
 
@@ -7,8 +9,16 @@ function handler(req, res) {
       return; 
     }
 
-    console.log(userEmail);
-    res.status(201).json({message: 'signed up'})
+    const client = await MongoClient.connect(
+      'mongodb+srv://nqatyelwaangelin:<angeli@101>@cluster0.gx7p3wm.mongodb.net/newsletter?retryWrites=true&w=majority&appName=AtlasApp'
+      );
+      const db = client.db();
+
+      await db.collection('emails').insertOne({ email: userEmail});
+
+      client.close();
+      
+      res.status(201).json({message: 'signed up'})
   }
 }
 
