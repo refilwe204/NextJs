@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import react, { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
