@@ -11,6 +11,12 @@ function NewsletterRegistration() {
 
     const enteredEmail = emailInputRef.current.value;
 
+    notificationCtx.showNotification({
+      title: 'Signing up...',
+      message: 'Registering for newsletter.',
+      status: 'pending',
+    });
+
     fetch('/api/newsletter', {
        method: 'POST',
        body: JSON.stringify({ email: enteredEmail}),
