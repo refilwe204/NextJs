@@ -1,4 +1,4 @@
-import react, { useState, useEffect, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import CommentList from './comment-list';
 import NewComment from './new-comment';
@@ -14,19 +14,17 @@ function Comments(props) {
   const [comments, setComments] = useState([]);
   const [isFetchingComments, setIsFetchingComments] = useState(false);
 
-  useEffect (() => {
+  useEffect(() => {
     if (showComments) {
       setIsFetchingComments(true);
       fetch('/api/comments/' + eventId)
-      .then((response) => response.json())
-      .then((data) => {
-        setComments(data.comments);
-        setIsFetchingComments(false);
-    });
-  }
-  
-}, [showComments]);
-
+        .then((response) => response.json())
+        .then((data) => {
+          setComments(data.comments);
+          setIsFetchingComments(false);
+        });
+    }
+  }, [showComments]);
   function toggleCommentsHandler() {
     setShowComments((prevStatus) => !prevStatus);
   }
@@ -42,35 +40,33 @@ function Comments(props) {
       method: 'POST',
       body: JSON.stringify(commentData),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-
     })
       .then((response) => {
         if (response.ok) {
           return response.json();
-      }
+        }
 
-      return response.json().then(data => {
-        throw new Error(data.message || 'Something went wrong!');
-      });
-   })
+        return response.json().then((data) => {
+          throw new Error(data.message || 'Something went wrong!');
+        });
+      })
       .then((data) => {
         notificationCtx.showNotification({
-          title: 'success!',
+          title: 'Success!',
           message: 'Your comment was saved!',
           status: 'success',
         });
       })
-      .catch(error =>{
+      .catch((error) => {
         notificationCtx.showNotification({
           title: 'Error!',
           message: error.message || 'Something went wrong!',
           status: 'error',
-        });         
+        });
       });
   }
-
 
   return (
     <section className={classes.comments}>
@@ -78,10 +74,9 @@ function Comments(props) {
         {showComments ? 'Hide' : 'Show'} Comments
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
-      {showComments && isFetchingComments && <CommentList items= {comments}/>}
+      {showComments && !isFetchingComments && <CommentList items={comments} />}
       {showComments && isFetchingComments && <p>Loading...</p>}
     </section>
   );
 }
-
 export default Comments;
