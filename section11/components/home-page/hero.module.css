@@ -21,7 +21,7 @@
 .image img {
   object-fit: cover;
   object-position: top;
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 

@@ -1,4 +1,5 @@
 function PostDetailPage() {
+    return 
 
 }
 
