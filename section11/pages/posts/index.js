@@ -1,3 +1,5 @@
-function AllPostPage() {}
+function AllPostPage() {
+
+}
 
 export default AllPostPage;
