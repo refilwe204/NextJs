@@ -7,7 +7,7 @@ const DUMMY_POST = {
       slug: 'getting-started-with-nextjs',
       title: 'Getting Started with NextJS',
       image: 'getting-started-nextjs.png',
-      date: '2022-02-10',
+      date: '2023-09-21',
       content: '# This is a first post',
     };
 
