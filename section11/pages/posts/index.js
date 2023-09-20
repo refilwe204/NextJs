@@ -1,7 +1,5 @@
 import AllPosts from "../../components/posts/all-posts";
 
-
-
 const DUMMY_POSTS = [
     {
       slug: 'getting-started-with-nextjs',
