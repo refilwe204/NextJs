@@ -19,20 +19,23 @@ async function Handler(req, res) {
   const newMessage = {
     email,
     name,
-    message
+    message,
   };
 
+  let client;
+
   try {
- const client = await MongoClient.connect(
-  ''
+  const client = await MongoClient.connect(
+  'mongodb+srv://user2:fsVSubw3OkOMCRlr@cluster0.jvoxrhm.mongodb.net/event?retryWrites=true&w=majority&appName=AtlasApp'
   );
+  
 
  } catch (error) {
    res.status(500).json({message: 'Could not connect to database'});
    return;
  }
 
- const db = client.db;
+ const db = client.db();
 
  try {
  const result = await db.collection('messages').insertOne(newMessage);
