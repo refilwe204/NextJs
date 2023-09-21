@@ -24,7 +24,7 @@ async function Handler(req, res) {
 
   try {
  const client = await MongoClient.connect(
-  'mongodb+srv://refilwe101:<angelin@>@cluster0.mrdzcsx.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
+  ''
   );
 
  } catch (error) {
