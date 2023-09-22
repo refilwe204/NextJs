@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb';
 
 export async function connectDatabase() {
     const client = await MongoClient.connect(
-        'mongodb+srv://user1:qBRTpLJ0bCKc5jFK@cluster0.s2ffwug.mongodb.net/events?retryWrites=true&w=majority&appName=AtlasApp'
+        'mongodb+srv://user2:fDS1kBJLYcNQFlb4@cluster0.jvoxrhm.mongodb.net/event?retryWrites=true&w=majority&appName=AtlasApp'
     );
 
     return client;

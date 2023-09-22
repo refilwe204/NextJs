@@ -19,8 +19,11 @@ function AllEventsPage(props) {
   return (
     <Fragment>
       <Head>
-        <title>All events</title>
-        <meta name="description" content="Search for new places....." />
+      <title>All Events</title>
+        <meta 
+          name='description'
+          content='Find a lot of great events that allow you to evolve...'
+        />
       </Head>
       <EventsSearch onSearch={findEventsHandler} />
       <EventList items={events} />
