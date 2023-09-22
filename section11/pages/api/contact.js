@@ -26,7 +26,7 @@ async function Handler(req, res) {
 
   try {
   const client = await MongoClient.connect(
-    'mongodb+srv://user2:fDS1kBJLYcNQFlb4@cluster0.jvoxrhm.mongodb.net/event?retryWrites=true&w=majority&appName=AtlasApp'
+    'mongodb+srv://refilwe101:TcSwxxeG4jG8GaKV@cluster0.jvoxrhm.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
   );
   
 
@@ -54,3 +54,4 @@ client.close();
 }
 
 export default Handler;
+
