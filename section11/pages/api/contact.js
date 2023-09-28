@@ -26,9 +26,8 @@ async function Handler(req, res) {
 
   try {
   const client = await MongoClient.connect(
-    'mongodb+srv://refilwe101:TcSwxxeG4jG8GaKV@cluster0.jvoxrhm.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
+    'mongodb+srv://<user2>:x7WMHsjAAfxQUsXr@cluster0.jvoxrhm.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
   );
-  
 
  } catch (error) {
    res.status(500).json({message: 'Could not connect to database'});

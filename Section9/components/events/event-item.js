@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 import Button from '../ui/button';
 import DateIcon from '../icons/date-icon';
 import AddressIcon from '../icons/address-icon';
@@ -14,7 +13,9 @@ function EventItem(props) {
     month: 'long',
     year: 'numeric',
   });
-  const formattedAddress = location.replace(', ', '\n');
+
+  // Check if location is defined before using replace
+  const formattedAddress = location ? location.replace(', ', '\n') : '';
   const exploreLink = `/events/${id}`;
 
   return (
